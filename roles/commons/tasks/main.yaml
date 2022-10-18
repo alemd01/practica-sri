@@ -1,0 +1,8 @@
+- name: "Actualizada la paquetería."
+  apt:
+    update_cache=yes upgrade=yes
+- name: "Añadida clave pública ssh."
+  ansible.posix.authorized_key:
+    user: vagrant
+    state: present
+    key: "{{ lookup('file', '/home/alemd/.ssh/id_rsa.pub') }}"
